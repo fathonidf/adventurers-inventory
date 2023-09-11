@@ -3,9 +3,9 @@ from django.shortcuts import render
 # Create your views here.
 def show_main(request):
     context = {
-        'name': 'fathonidf',
-        'role': 'Mage',
-        'level': '1'
+        'app_name': 'Adventurer\'s Inventory',
+        'name': 'Daffa Mohamad Fathoni',
+        'class': 'PBP E'
     }
 
     return render(request, "main.html", context)
