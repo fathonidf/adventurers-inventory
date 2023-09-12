@@ -116,7 +116,7 @@ Terakhir, aplikasi yang saya buat memiliki *domain* bernama `https://adventurers
 
 >2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
-![bagan]("C:\Users\Daffa Fathoni\Documents\Universitas Indonesia\Ilmu Komputer\Semester 3\Pemrograman Berbasis Platform\Tugas\baganrequest.png")
+![bagan](https://github.com/fathonidf/adventurers-inventory/assets/105644250/9cb5536b-83d7-45ea-ae2b-a8abde7cde9e)
 
 Saat pengguna mengirimkan permintaan HTTP aplikasi main melalui web browser, urls.py melakukan pemetaan URL untuk meneruskan permintaan HTTP ke views.py sesuai dengan URL yang diminta. Kemudian, view menghasilkan response HTTP berupa halaman HTML. Dalam proses ini, views.py mengambil data yang diperlukan melalui models.py dan menampilkan data tersebut menggunakan template main.html.
 
