@@ -1,4 +1,4 @@
-# Adventurer's Inventory
+# :school_satchel: Adventurer's Inventory :tent:
 `Daffa Mohamad Fathoni 2206824161
 PBP E`
 
