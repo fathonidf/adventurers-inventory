@@ -133,7 +133,7 @@ Membuat aplikasi tanpa *virtual environment* tetap dapat dijalankan namun lebih 
 >4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
 
 | MVC         | MVT         | MVVM          |
-| :---        |    ----   |          --- |
+| ---        |    ----   |          --- |
 | Model-View-Controller      | Model-View-Template     | Model-View-View-Model   |
 | Model: Menyimpan dan mengimplementasikan pengelolaan logika data   | Model: Menyimpan dan mengimplementasikan pengelolaan logika data        | Model: Menyimpan dan mengimplementasikan pengelolaan logika data    |
 | View: Bertanggung jawab sebagai pengelola antarmuka pengguna dan menampilkan data yang diberikan model lalu mengirim input ke Controller | View: Visualisasi dan menampilkan data ke pengguna tetapi dalam Framework Python Django| View: Menginformasi ke ViewModel terkait interaksi pengguna, dan hanya menampilkan data yang disediakan oleh ViewModel |
