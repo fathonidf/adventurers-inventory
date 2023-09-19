@@ -306,18 +306,20 @@ Potongan kode berikut pada dasarnya memvalidasi (`form.is_valid()`) dan menyimpa
 ```python
 def show_main(request):
     items = Item.objects.all()
+    total_items = items.count()
 
     context = {
         'app_name': 'Adventurer\'s Inventory',
         'name': 'Daffa Mohamad Fathoni',
         'class': 'PBP E',
+        'total_items': total_items,
         'items': items
     }
 
     return render(request, "main.html", context)
 ```
 
-`items = Item.objects.all()` mengakses objek-objek tersebut, lalu pada `context = {}` ditambahkan `key` berupa `items` untuk nantinya akan ditampilkan di `main.html`.
+`items = Item.objects.all()` mengakses objek-objek tersebut, lalu pada `context = {}` ditambahkan `key` berupa `items` untuk nantinya akan ditampilkan di `main.html`. `total_items = items.count()` berguna untuk menghitung banyaknya objek pada *database*, lalu dimasukkan ke dalam variabel `context` untuk nantinya ditampilkan pada `main.html`.
 
 4. Pada `urls.py` ditambahkan *import* fungsi `create_item` lalu menambahkan *path url* ke variable `urlpatterns`.
 
@@ -359,6 +361,8 @@ Pada kode `<form method="POST">`, metode *form* yang dipakai adalah `POST` untuk
 
 6. Terakhir, agar isi data item yang telah diinput dapat ditampilkan, isi `main.html` dapat ditambahkan sintaks `for loop` untuk mengiterasikan tiap item yang terdapat di *database*. 
 ```html
+<h3>Total items in your inventory : {{total_items}}</h3>
+
 <table>
     <tr>
         <th>Name</th>
@@ -384,7 +388,7 @@ Pada kode `<form method="POST">`, metode *form* yang dipakai adalah `POST` untuk
 </table>
 ```
 
-`{% for item in items %}` mengiterasikan tiap item dalam *database* berdasarkan isi dari `context` pada fungsi `show_main` yang ada di `views.py`.
+Pada potongan kode `<h3>Total items in your inventory : {{total_items}}</h3>` akan menampilkan banyaknya `item` yang sudah diinput.  `{% for item in items %}` mengiterasikan tiap item dalam *database*. Kedua sintaks tersebut mengacu pada isi dari `context` pada fungsi `show_main` yang ada di `views.py`.
 
 - [x] Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
 
