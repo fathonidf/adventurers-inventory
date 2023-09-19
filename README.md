@@ -395,7 +395,7 @@ from django.http import HttpResponse
 from django.core import serializers
 ```
 
-Lalu ditambhakan fungsi pada `views.py` yang akan menampilkan objek dalam format sesuai poin 2
+Lalu ditambahkan fungsi pada `views.py` yang akan menampilkan objek dalam format sesuai poin 2
 
 ```python
 def show_xml(request):
