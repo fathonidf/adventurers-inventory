@@ -4,6 +4,7 @@ PBP E`
 
 ## Tautan Aplikasi
 [Link to Adventurer's Inventory](https://adventurers-inventory.adaptable.app/main)
+(*sebelum deactivated*)
 
 ## Tugas 2
 <details>
@@ -18,6 +19,8 @@ Saya membuat direktori lokal dan repo baru di Github bernama ***Adventurer's Inv
 Pada proyek ***Adventurer's Inventory*** ini terdapat suatu aplikasi bernama `main` yang memiliki model, tampilan, dan URL khusus dengan rute `/main`. Inisiasi aplikasi `main` saya lakukan dengan perintah `python manage.py startapp main` hingga terbentuk direktori baru pada projek/direktori utama. Tak lupa saya daftarkan aplikasi ini ke `INSTALLED APPS` di `settings.py` seperti berikut,
 
 ```
+.python
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -152,6 +155,17 @@ Membuat aplikasi tanpa *virtual environment* tetap dapat dijalankan namun lebih 
 
 ---
 ## Tugas 3
+
+<details>
+<summary>1. Apa perbedaan antara form POST dan form GET dalam Django?</summary>
+
+* GET dan POST merupakan sebuah form HTTP Requests, yaitu sebuah jalur komunikasi antar client dan web server di World Wide Web
+
+| GET   | POST  |
+| ---   | ---   |
+| Meminta untuk menerima data dari web server| Meminta untuk mengirimkan data ke web server|
+| Mengembalikan kode status HTTP 200 jika data sukses diterima | Mengembalikan kode status HTTP 201 jika sukses *created*|
+</details>
 
 <details>
 <summary>1. Apa perbedaan antara form POST dan form GET dalam Django?</summary>
