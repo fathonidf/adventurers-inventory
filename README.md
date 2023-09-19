@@ -6,8 +6,8 @@ PBP E`
 [Link to Adventurer's Inventory](https://adventurers-inventory.adaptable.app/main)
 (*sebelum deactivated*)
 
-<details>
-<summary> Tugas 2</summary>
+
+# Tugas 2
 
 <details>
 <summary>1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
@@ -154,10 +154,9 @@ Membuat aplikasi tanpa *virtual environment* tetap dapat dijalankan namun lebih 
 
 </details>
 
-</details>
 ---
-<details>
-<summary> Tugas 3 </summary>
+
+# Tugas 3
 
 <details>
 <summary>1. Apa perbedaan antara form POST dan form GET dalam Django?</summary>
@@ -165,7 +164,7 @@ Membuat aplikasi tanpa *virtual environment* tetap dapat dijalankan namun lebih 
 * GET dan POST merupakan sebuah form HTTP Requests, yaitu sebuah jalur komunikasi antar client dan web server di World Wide Web
 
 | `GET`   | `POST`  |
-| :---:   | :---:   |
+| ---   | ---   |
 | Meminta untuk menerima data dari web server| Meminta untuk mengirimkan data ke web server|
 | Mengembalikan kode status HTTP 200 jika data sukses diterima | Mengembalikan kode status HTTP 201 jika sukses *created*|
 | Dikirimkan melalui URL sebagai bagian dari query string | Dikirimkan dalam body request HTTP secara tersembunyi |
@@ -198,7 +197,7 @@ Membuat aplikasi tanpa *virtual environment* tetap dapat dijalankan namun lebih 
 * HTML lebih menekankan fungsinya berguna sebagai mendeskripsikan bagaimana data ditampilkan, mendefinisikan struktur dan tampilan web.
 
 | XML   | JSON  | 
-| :---:   | :---:   | 
+| ---   | ---  | 
 |Extensible Markup Language | JavaScript Object Notation | 
 |Berdasarkan SGML |Berdasarkan JavaScript |
 | Menggunakan tag (`</>`) untuk merepresentasikan data | Menggunakan kurung kurawal (`{}`), kurung siku(`[]`), dan berbentuk `key:value` |
@@ -453,6 +452,4 @@ urlpatterns = [
 ![xmlbyid](https://github.com/fathonidf/adventurers-inventory/assets/105644250/aa784e40-bd99-4176-8ce8-a08b4b93ab5e)
 ### 5. JSON by ID
 ![jsonbyid](https://github.com/fathonidf/adventurers-inventory/assets/105644250/9ae03290-57ea-4acc-9d1c-e012056b60ca)
-</details>
-
 </details>
