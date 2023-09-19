@@ -6,7 +6,8 @@ PBP E`
 [Link to Adventurer's Inventory](https://adventurers-inventory.adaptable.app/main)
 
 ## Tugas 2
->1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+<details>
+<summary>1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
 
  - [x] Membuat sebuah proyek Django baru.
 
@@ -113,14 +114,18 @@ Pada PBP sekarang, kepentingan *deployment* bertujuan untuk menampilkan secara l
 
 Terakhir, aplikasi yang saya buat memiliki *domain* bernama `https://adventurers-inventory.adaptable.app/main`.
 
+</details>
 
->2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+<details>
+<summary>2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.</summary>
 
 ![bagan](https://github.com/fathonidf/adventurers-inventory/assets/105644250/9cb5536b-83d7-45ea-ae2b-a8abde7cde9e)
 
 Saat pengguna mengirimkan permintaan HTTP aplikasi main melalui web browser, urls.py melakukan pemetaan URL untuk meneruskan permintaan HTTP ke views.py sesuai dengan URL yang diminta. Kemudian, view menghasilkan response HTTP berupa halaman HTML. Dalam proses ini, views.py mengambil data yang diperlukan melalui models.py dan menampilkan data tersebut menggunakan template main.html.
+</details>
 
->3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
+<details>
+<summary>3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?</summary>
 
 Virtual environment digunakan untuk mengisolasi *dependencies* dan modul Python yang dipakai untuk kebutuhan proyek Anda masing-masing sehingga tidak akan bertabrakan dan terpengaruh oleh modul atau konfigurasi proyek yang lain. Hal ini akan menghindari instalasi paket atau modul secara global karena semisal paket atau modul tersebut hanya untuk proyek tertentu.
 
@@ -129,8 +134,10 @@ Semisal Proyek A menggunakan Django 4.0 dan Proyek B menggunakan Django 4.1, den
 Virtual environment dibuat dengan perintah `python -m venv env`, dan diaktifkan dengan perintah `env\Scripts\activate.bat`.
 
 Membuat aplikasi tanpa *virtual environment* tetap dapat dijalankan namun lebih dianjurkan mengimplementasikan *virtual environment* karena hal ini dapat memudahkan untuk pengelolaan konsistensi dari masing-masing *dependencies* proyek sehingga menjadikannya sebuah *good practice* 
+</details>
 
->4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
+<details>
+<summary>4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.</summary>
 
 | MVC         | MVT         | MVVM          |
 | ---        |    ----   |          --- |
@@ -140,3 +147,33 @@ Membuat aplikasi tanpa *virtual environment* tetap dapat dijalankan namun lebih 
 | Controller: Menjembatani hubungan antara View dan Model dan sebagai inti logika dan alur aplikasi dengan menginformasi interaksi user ke Model | Template: Mengambil data dari model dan menampilkannya, berupa HTML  | ViewModel: Perantara antara Model dan View, mengubah data dari Model menjadi format sesuai dengan tampilan |
 |![mvc](https://media.geeksforgeeks.org/wp-content/uploads/20201002214740/MVCSchema.png) |![mvp](https://media.geeksforgeeks.org/wp-content/uploads/20201024233154/MVPSchema.png) |![mvvm](https://media.geeksforgeeks.org/wp-content/uploads/20201002215007/MVVMSchema.png) |
 |MVC adalah pola yang umum digunakan dalam pengembangan aplikasi berbasis desktop dan web tradisional. Ini memisahkan tiga komponen utama aplikasi untuk meningkatkan pemeliharaan dan pengembangan kode. |MVT adalah pola yang spesifik untuk kerangka kerja Django, yang dirancang khusus untuk pengembangan aplikasi web dengan Python. Ini menggantikan View dalam MVC dengan Template, yang memungkinkan pemisahan yang lebih jelas antara tampilan dan pemrosesan HTTP. |MVVM adalah pola desain yang sering digunakan dalam pengembangan aplikasi berbasis antarmuka pengguna (UI), terutama pada platform seperti WPF (Windows Presentation Foundation). Ini fokus pada pemisahan antara tampilan dan logika bisnis, dengan menggunakan ViewModel sebagai perantara. |
+
+</details>
+
+---
+## Tugas 3
+
+<details>
+<summary>1. Apa perbedaan antara form POST dan form GET dalam Django?</summary>
+
+</details>
+
+<details>
+<summary>2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?</summary>
+
+</details>
+
+<details>
+<summary>3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?</summary>
+
+</details>
+
+<details>
+<summary>4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
+
+</details>
+
+<details>
+<summary>Screenshot Postman</summary>
+
+</details>
