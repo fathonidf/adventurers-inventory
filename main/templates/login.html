@@ -4,42 +4,132 @@
     <title>Login</title>
 {% endblock meta %}
 
+
 {% block content %}
 
+<div class = "title">
+    <style>
+        h1{
+            text-align: center;
+            color:white;
+            text-shadow: 0px 0px 5px #000000;
+            font-family: "Andy Bold V2";
+            font-size: 45px;
+            padding: 0px 100px 0px 100px;
+        }
+
+        .title {
+            position: absolute;
+            top: 0;
+            left: 1;
+            z-index: 1;
+            padding: 175px 0px 0px 0px;
+        }
+    </style>
+    <h1>Adventurer's Inventory</h1>
+</div>
+
+
 <div class = "login">
+    <style>
+        @font-face {
+            font-family: "Andy Bold V2";
+            src: url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.eot");
+            src: url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.eot?#iefix")format("embedded-opentype"),
+            url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.woff2")format("woff2"),
+            url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.woff")format("woff"),
+            url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.ttf")format("truetype"),
+            url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.svg#Andy Bold V2")format("svg");
+        }
 
-    <h1>Login</h1>
+        .login{
+            position: absolute;
+            top: 2;
+            left: 1;
+            z-index: 2;
+        }
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+        td{
+            font-family: "Andy Bold V2";
+            text-shadow: 0px 0px 5px #000000;
+            font-size: large;
+        }
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+        input{
+            font-family: "Andy Bold V2";
+        }
 
+        .login_btn{
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            text-shadow: 0px 0px 5px #000000;
+            font-size: large;
+        }
+        .login_btn:hover{
+            transform: scale(1.65);
+            color:#fed405;
+        }
+
+        input[type=text], input[type=password]{
+            width: 100%;
+            margin: 4px 0;
+            border: 0.7px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
+
+            background-color: rgba(54, 53, 131, 1);
+            color:white;
+        }
+    </style>
+        <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-image: url('https://forums.terraria.org/index.php?attachments/n-2-png.31584/'); background-size: cover;">
+            <div style="background: rgba(52, 48, 92, 0.8); padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">  
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <table >
+                        <tr>
+                            <td style="color:white">Username: </td>
+                            <td><input type="text" name="username" placeholder="Username" class="form-control" ></td>
+                        </tr>
+                                
+                        <tr>
+                            <td style="color:white">Password: </td>
+                            <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td><input class="login_btn" type="submit" value="Login" id="tombolLogin"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>  
+        </body>
     {% if messages %}
         <ul>
             {% for message in messages %}
-                <li>{{ message }}</li>
+                <li style="color:white; font-family: Andy Bold V2; text-shadow: 0px 0px 5px #000000;">{{ message }}</li>
             {% endfor %}
         </ul>
-    {% endif %}     
-        
-    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+    {% endif %}
+    
+    <p> </p>
 
+    <style>
+        a{
+            color:white;
+            font-family: "Andy Bold V2";
+            text-shadow: 0px 0px 5px #000000;      
+        }
+        a:hover{
+            color:#fed405;
+        }
+    </style>
+      
+    <div style="background-color: rgba(52, 48, 92, 0.8); padding: 10px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+        <a style="color:white;">Don't have an account yet?</a> <a href="{% url 'main:register' %}" >Register Now</a>
+    </div>
 </div>
 
 {% endblock content %}
