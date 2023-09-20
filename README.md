@@ -457,3 +457,27 @@ urlpatterns = [
 ### 5. JSON by ID
 ![jsonbyid](https://github.com/fathonidf/adventurers-inventory/assets/105644250/9ae03290-57ea-4acc-9d1c-e012056b60ca)
 </details>
+
+---
+
+# Tugas 4
+
+<details>
+<summary>1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?</summary>
+</details>
+
+<details>
+<summary>2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?</summary>
+</details>
+
+<details>
+<summary>3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?</summary>
+</details>
+
+<details>
+<summary>4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?</summary>
+</details>
+
+<details>
+<summary>5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
+</details>
