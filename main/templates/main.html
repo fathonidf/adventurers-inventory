@@ -15,11 +15,11 @@
 <table>
     <tr>
         <th>Name</th>
-        <th>Amount</th>
         <th>Description</th>
         <th>Price</th>
         <th>iLvl</th>
         <th>Use</th>
+        <th>Amount</th>
     </tr>
 
     {% comment %} Berikut cara memperlihatkan data item di bawah baris ini {% endcomment %}
@@ -27,11 +27,33 @@
     {% for item in items %}
         <tr>
             <td>{{item.name}}</td>
-            <td>{{item.amount}}</td>
             <td>{{item.description}}</td>
             <td>{{item.price}}</td>
             <td>{{item.item_level}}</td>
             <td>{{item.use}}</td>
+            <td>{{item.amount}}</td>
+
+            <td>
+                <form method="post" action="{% url 'main:increment_item' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">+</button>
+                </form>
+            </td>
+
+            <td>
+                <form method="post" action="{% url 'main:decrement_item' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">-</button>
+                </form>
+            </td>
+
+            <td>
+                <form method="post" action="{% url 'main:trash_item' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit"><img src="https://static.wikia.nocookie.net/terraria_gamepedia/images/b/b1/Trash_Slot.png/revision/latest?cb=20171214025354&format=original"/></button>
+                </form>
+            </td>
+
         </tr>
     {% endfor %}
 </table>

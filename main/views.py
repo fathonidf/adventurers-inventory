@@ -24,7 +24,7 @@ def show_main(request):
         'class': 'PBP E',
         'total_items': total_items,
         'items': items,
-        'last_login': request.COOKIES['last_login']
+        'last_login': request.COOKIES.get("last_login")
     }
 
     return render(request, "main.html", context)
@@ -89,3 +89,29 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = Item.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def increment_item(request, id):
+    item = Item.objects.get(id=id)
+    item.amount += 1
+    item.save()
+
+    response = HttpResponseRedirect(reverse("main:show_main"))
+    return response
+
+def decrement_item(request, id):
+    item = Item.objects.get(id=id)
+    if (item.amount > 0):
+        item.amount -= 1
+        item.save()
+    if (item.amount == 0):
+        item.delete()
+
+    response = HttpResponseRedirect(reverse("main:show_main"))
+    return response
+
+def trash_item(request, id):
+    item = Item.objects.get(id=id)
+    item.delete()
+
+    response = HttpResponseRedirect(reverse("main:show_main"))
+    return response

@@ -465,20 +465,131 @@ urlpatterns = [
 <details>
 <summary>1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?</summary>
 
+Django `UserCreationForm` merupakan suatu modul build-in dari Django yang mewarisi class `ModelForm`. Modul ini digunakan untuk meng-*handle* ketika pengguna (*user*) akan membuat akun baru atau biasa disebut *user* baru pada aplikasi web. UserCreationForm memungkinkan *developer* untuk membuat formulir pendaftaran pengguna dengan cepat tanpa harus menulis banyak kode kustom.
+
+### Kelebihan:
+1. Kemudahan Penggunaan
+
+Modul ini menyederhanakan proses pembuatan formulir pendaftaran pengguna baru.
+
+2. Validasi Bawaan
+
+Mencakup validasi bawaan untuk berbagai input seperti *username* dan *password*.
+
+3. Integrasi dengan Model User Bawaan Django
+
+Terhubung dengan model `user` bawaan Django yang memungkinkan data dapat dimasukkan dan disimpan dalam tabel `user` secara otomatis.
+
+4. Fleksibilitas
+
+Selain mudah digunakan, kita dapat memodifikasinya sesuai dengan kebutuhan proyek dan aplikasi masing-masing. Seperti menambahkan atau mengubah proses validasi, tampilan, dan lainnya.
+
+5. Kode yang lebih Rapi
+
+Meminimalisir adanya duplikasi kode karena mengikuti prinsip DRY (*Don't Repeat Yourself*) sehingga menjadikannya lebih rapi dan mudah diatur.
+
+### Kekurangan:
+1. Modifikasi yang Terbatas
+
+Walaupun dapat memodifikasi untuk menyesuaikan kebutuhan proyek, modul ini akan terbatas ketika dibutuhkan bentuk yang lebih bervariasi. Hal tersebut memungkinkan untuk membuat formulir khusus sendiri.
+
+2. Tidak Cocok untuk Otorisasi lebih Kompleks
+
+`UserCreationForm` ini ditujukan untuk proses pendaftaran `user` secara mendasar. Tetapi, tidak mendukung untuk otorisasi atau profil pengguna yang lebih kompleks.
+
+3. *Bahasa yang Terbatas*
+
+`UserCreationForm` disesuaikan untuk bahasa tertentu khususnya bahasa inggris. Tetapi tidak mendukung ketika digunakan untuk aplikasi multibahasa.
+
 
 
 </details>
 
 <details>
 <summary>2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?</summary>
+
+|**Autentikasi** | **Otorisasi** |
+| --- | --- |
+|Memverifikasi klaim dan identitas seorang user| Menentukan hal-hal yang diperbolehkan seorang user akses dan lakukan|
+|Bekerja melalui *password*, PIN, biometrik, dan informasi user lainnya| Bekerja melalui pengaturan yang telah diimplementasi dan diatur oleh organisasi tersebut|
+|Langkah untuk proses manajemen identitas dan akses yang baik | Dilakukan setelah autentikasi|
+| Terlihat dan dapat diatur sebagian oleh user | Tidak terlihat dan tidak diberikan akses pengaturan kepada user |
+
+Contoh potongan kode autentikasi sesuai dengan *library* Django:
+ 
+```python
+from django.contrib.auth import authenticate
+
+user = authenticate(username="john", password="secret")
+if user is not None:
+    # A backend authenticated the credentials
+    ...
+else:
+    # No backend authenticated the credentials
+    ...
+```
+
+* **Kesimpulan**: Dapat disimpulkan, autentikasi digunakan untuk verifikasi identitas seorang  user. Setelah terautentikasi, otorisasi dilakukan untuk memberikan izin hak dan akses kepada seorang user dalam mengakses informasi-informasi, menjalankan suatu fitur, dan lainnya dengan bergantung pada aturan yang ditetapkan untuk berbagai jenis pengguna.
+
 </details>
 
 <details>
 <summary>3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?</summary>
+
+* Cookies adalah sepotong informasi kecil yang disetor dan disimpan di browser klien. Hal ini berguna untuk menyimpan data user di suatu file selama rentang waktu tertentu. Sebuah Cookie mempunyai tanggal kadaluarsa sehingga akan menghapus data atau cookie tersebut secara otomatis ketika mencapai batas waktunya. Django menyediakan *method-method* built-in untuk membuat cookie.
+
+* Sintaks untuk membuat dan mengakses cookie adalah `set_cookie()` dan `get()` atau `request.COOKIES['key]` (dalam bentuk array).
+
+* Contoh sepotong kodingan Django Cookie dalam `views.py` dan `urls.py`:
+
+```python
+from django.shortcuts import render  #views.py
+from django.http import HttpResponse  
+  
+def setcookie(request):  
+    response = HttpResponse("Cookie Set")  
+    response.set_cookie('java-tutorial', 'javatpoint.com')  
+    return response  
+def getcookie(request):  
+    tutorial  = request.COOKIES['java-tutorial']  
+    return HttpResponse("java tutorials @: "+  tutorial);  
+```
+
+```python
+from django.contrib import admin #urls.py
+from django.urls import path  
+from myapp import views  
+urlpatterns = [  
+    path('admin/', admin.site.urls),  
+    path('index/', views.index),  
+    path('scookie',views.setcookie),  
+    path('gcookie',views.getcookie)  
+]  
+```
+
 </details>
 
 <details>
 <summary>4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?</summary>
+
+Secara umum, bukan merupakan ancaman terkait privasi dan keamanan web karena tidak menyimpan data pribadi dan tidak bisa mengirim virus. Namun, terdapat beberapa risiko yang harus diwaspadai seperti:
+
+1. Disalahgunakan oleh pihak ketiga yang tidak berwenang untuk melacak aktivitas online pengguna, mengumpulkan data pribadi.
+
+2. Dicuri peretas untuk mengakses informasi sensitif seperti data, token, kredensial dengan tujuan pencurian, pembajakan, atau penipuan.
+
+3. Dapat menimbulkan masalah privasi dan keamanan jika tidak dikelola dengan baik oleh pengembang web, seperti tidak menghapus cookie yang sudah tidak diperlukan atau tidak mengenkripsi cookie yang berisi data penting.
+
+Beberapa hal yang bisa dijadikan sebagai *Best Practice* untuk diikuti seperti:
+
+1. Menggunakan cookie pihak pertama untuk situs web sendiri
+
+2. Cookie hanya berlaku selama pengguna **sedang** menjelajah situs web
+
+3. Menggunakan cookie untuk data yang benar-benar diperlukan untuk fungsionalitas web
+
+4. Hanya dapat diakses melalui protokol HTTPS yang aman.
+
 </details>
 
 <details>
