@@ -850,6 +850,12 @@ Pada kode diatas, pengguna diharuskan login dulu, lalu bisa mengakses `main` ket
 
 - [x] Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
 
+Akun 1:
+![akun1](https://media.discordapp.net/attachments/894158439008305192/1156445662645342238/image.png?ex=6514ff73&is=6513adf3&hm=7acbc38cada213622e7a64dba4cabc8c90a622f625ad451fd3f1be58b04845c0&=&width=972&height=662)
+
+Akun 2:
+![akun2](https://media.discordapp.net/attachments/894158439008305192/1156445725312417842/image.png?ex=6514ff82&is=6513ae02&hm=ff9ec3d52f251cb07d0c7ca6b2d3ab59e7a07501f591628d032bfa7cabd8a538&=&width=981&height=662)
+
 - [x] Menghubungkan model Item dengan User.
 
 1. Untuk menghubungkan Model `Item` dengan `User`, maka kita akan menambahkan library `User` pada `models.py` dan mengasosiasikan suatu `Item` dengan user tertentu sesuai dengan kode berikut:
