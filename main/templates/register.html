@@ -18,12 +18,53 @@
             url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.svg#Andy Bold V2")format("svg");
         }
 
+
         .container{
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
+            font-size: 17px;
+        }
+        
+        .container form {
+            text-align: left;
+        }
+
+        .container form table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+
+        .container form input[type="text"],
+        .container form input[type="password"] {
+            width: 100%;
+            margin: 4px 0;
+            border: 0.7px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
+
+            background-color: rgba(54, 53, 131, 1);
+            color:white;
+            font-family: "Andy Bold V2";
+            font-size: 17px;
+        }
+
+        .container form input[type="submit"] {
+            background-color: transparent;
+            color: #fff;
+            padding: 10px 0px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            align-items: center;
+        }
+
+        .container form input[type="submit"]:hover {
+            transform: scale(1.3);
+            color:#fed405;
         }
 
         body{
@@ -37,13 +78,13 @@
             text-shadow: 0px 0px 5px #000000;
         }
 
-        h1{
+        .title{
             text-align: center;
             color:white;
             text-shadow: 0px 0px 5px #000000;
             font-family: "Andy Bold V2";
-            font-size: 45px;
-            padding: 175px 0px 0px 0px;
+            font-size: 25px;
+            padding: 100px 0px 0px 0px;
         }
 
         .register_form{
@@ -53,7 +94,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
-        .daftar_btn{
+        .submit_btn{
             background-color: transparent;
             border: none;
             cursor: pointer;
@@ -62,9 +103,13 @@
             font-family: "Andy Bold V2";
             font-size: 24px;
         }
-        .daftar_btn:hover{
+        .submit_btn:hover{
             transform: scale(1.65);
             color:#fed405;
+        }
+
+        li{
+            font-size: 14px;
         }
         
     </style>
@@ -80,7 +125,7 @@
                 {{ form.as_table }}  
                 <tr>  
                     <td></td>
-                    <td><input class="daftar_btn"type="submit" name="submit" value="Daftar"/></td>  
+                    <td><input class="submit_btn"type="submit" name="submit" value="Submit"/></td>  
                 </tr>  
             </table>  
         </form>
@@ -93,6 +138,27 @@
                 {% endfor %}  
         </ul>   
     {% endif %}
+
+    <style>
+        a{
+            color:white;
+            font-family: "Andy Bold V2";
+            text-shadow: 0px 0px 5px #000000;      
+        }
+        .login_link:hover{
+            color:#fed405;
+            font-size: 1.2rem;
+        }
+        .login_box{
+            margin: 10px 0px 0px 0px;
+        }
+    </style>
+
+    <div class = "login_box">
+        <div style="background-color: rgba(52, 48, 92, 0.8); padding: 10px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+            <a style="color:white;">Already have an account?</a> <a href="{% url 'main:login' %}" class="login_link">Login Now</a>
+        </div>
+    </div>
 
 </div>  
 

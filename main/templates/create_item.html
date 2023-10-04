@@ -1,19 +1,114 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block content %}
-<h1>Add New Item</h1>
+<body>
+<div class="container">
+    <style>
+        @font-face {
+            font-family: "Andy Bold V2";
+            src: url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.eot");
+            src: url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.eot?#iefix")format("embedded-opentype"),
+            url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.woff2")format("woff2"),
+            url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.woff")format("woff"),
+            url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.ttf")format("truetype"),
+            url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.svg#Andy Bold V2")format("svg");
+        }
 
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Add Item"/>
-            </td>
-        </tr>
-    </table>
-</form>
+        * {
+            font-family:"Andy Bold V2";
+            color: white;
+        }
 
-{% endblock %}
+        body{
+            background-image: url(https://i.redd.it/tva5ecndfyp71.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .common-style {
+            font-family: "Andy Bold V2";
+            color: white;
+            text-shadow: 0px 0px 5px #000000;
+        }
+
+        .common-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-family: "Andy Bold V2";
+        }
+
+        .common-button:hover {
+            transform: scale(1.65);
+            color: #fed405;
+        }
+
+        .common-form {
+            text-align: left;
+        }
+
+        .common-input {
+            width: 100%;
+            margin: 4px 0;
+            border: 0.7px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: rgba(54, 53, 131, 1);
+            color: white;
+            font-family: "Andy Bold V2";
+            font-size: 17px;
+        }
+
+        .common-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            font-size: 17px;
+        }
+
+        .common-box {
+            background: rgba(52, 48, 92, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+    <div class="title common-style">
+        <h1>Add New Item</h1>
+    </div>
+
+    <div class="common-box register_form">
+        <form method="POST" class="common-form">
+            {% csrf_token %}
+            <table class="common-table">
+                {{ form.as_table }}
+                <tr>
+                    <td></td>
+                    <td><input class="common-button" type="submit" name="submit" value="Submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    {% if messages %}
+    <ul class="common-style">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</div>
+</body>
+{% endblock content %}

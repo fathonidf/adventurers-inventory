@@ -14,9 +14,8 @@
                 text-align: center;
                 color:white;
                 text-shadow: 0px 0px 5px #000000;
-                font-family: "Andy Bold V2";
                 font-size: 45px;
-                padding: 0px 100px 0px 100px;
+                padding: 170px 100px 0px 100px;
             }
     
             .container{
@@ -42,14 +41,13 @@
                 url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.svg#Andy Bold V2")format("svg");
             }
 
-            td{
-                font-family: "Andy Bold V2";
-                text-shadow: 0px 0px 5px #000000;
-                font-size: large;
+            * {
+                font-family:"Andy Bold V2";
             }
 
-            input{
-                font-family: "Andy Bold V2";
+            td{
+                text-shadow: 0px 0px 5px #000000;
+                font-size: large;
             }
 
             .login_btn{
@@ -71,12 +69,13 @@
                 border: 0.7px solid black;
                 border-radius: 5px;
                 box-sizing: border-box;
+                font-size: 17px;
 
                 background-color: rgba(54, 53, 131, 1);
                 color:white;
             }
         </style>
-            <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-image: url('https://forums.terraria.org/index.php?attachments/n-2-png.31584/'); background-size: cover; background-repeat: no-repeat;">
+            <body style="justify-content: center; align-items: center; height: 100vh; margin: 0; background-image: url('https://forums.terraria.org/index.php?attachments/n-2-png.31584/'); background-size: cover; background-repeat: no-repeat;">
                 <div style="background: rgba(52, 48, 92, 0.8); padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">  
                     <form method="POST" action="">
                         {% csrf_token %}
@@ -121,6 +120,9 @@
             .register_link:hover{
                 color:#fed405;
                 font-size: 1.2rem;
+            }
+            .register_box{
+                margin: 10px 0px 0px 0px;
             }
         </style>
 

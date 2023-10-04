@@ -970,3 +970,315 @@ def logout_user(request):
 Maka pada halaman tersebut akan menampilkan informasi terakhir seorang pengguna melakukan login di halaman utama (`main.html`).
 
 </details>
+
+---
+
+# Tugas 5
+
+<details>
+<summary>1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.</summary>
+
+### Element selector CSS adalah pola yang digunakan untuk memilih elemen HTML yang ingin diberi gaya. Ada beberapa jenis element selector CSS, antara lain:
+
+* **Selektor tag** adalah selektor yang memilih elemen berdasarkan nama tag. Contohnya, `p { color: blue; }` akan memilih semua elemen `<p>` dan memberi warna teks biru. Selektor tag berguna untuk memberi gaya secara umum kepada elemen yang sama.
+
+* **Selektor class** adalah selektor yang memilih elemen berdasarkan nama class yang diberikan. Selektor class dibuat dengan tanda titik di depannya. Contohnya, `.intro { font-size: 18px; }` akan memilih semua elemen yang memiliki atribut `class="intro"` dan memberi ukuran font `18px`. Selektor class berguna untuk memberi gaya khusus kepada elemen yang memiliki ciri tertentu.
+
+* **Selektor ID** adalah selektor yang memilih elemen berdasarkan nama ID yang diberikan. Selektor ID dibuat dengan tanda pagar `(#)` di depannya. Contohnya, `#header { background: teal; }` akan memilih elemen yang memiliki atribut `id="header"` dan memberi warna latar belakang teal. Selektor ID berguna untuk memberi gaya unik kepada elemen yang hanya ada satu di halaman web.
+
+* **Selektor atribut** adalah selektor yang memilih elemen berdasarkan atribut tertentu. Selektor atribut dibuat dengan tanda kurung siku `[ ]`. Contohnya, `input[type="text"] { border: 1px solid black; }` akan memilih semua elemen `<input>` yang memiliki atribut `type="text"` dan memberi garis tepi hitam. Selektor atribut berguna untuk memberi gaya spesifik kepada elemen yang memiliki nilai atribut tertentu.
+
+* **Selektor universal** adalah selektor yang memilih semua elemen pada jangkauan (scope) tertentu. Selektor universal dibuat dengan tanda bintang `*`. Contohnya, `* { margin: 0; }` akan memilih semua elemen dan memberi margin nol. Selektor universal berguna untuk me-reset gaya bawaan dari browser atau memberi gaya dasar kepada semua elemen.
+
+* **Selektor pseudo** adalah selektor yang memilih elemen berdasarkan keadaan atau posisi tertentu. Selektor pseudo dibuat dengan tanda titik dua `:`. Contohnya, `a:hover { color: red; }` akan memilih semua elemen `<a>` saat kursor mouse berada di atasnya dan memberi warna teks merah. Selektor pseudo berguna untuk memberi gaya dinamis kepada elemen sesuai dengan interaksi pengguna atau struktur dokumen.
+
+Link Referensi
+</details>
+
+<details>
+<summary>2. Jelaskan HTML5 Tag yang kamu ketahui.</summary>
+
+### HTML5 tag adalah tag yang digunakan untuk membuat dokumen HTML versi 5, yang merupakan standar terbaru untuk web. HTML5 tag memiliki beberapa fitur baru dan perbaikan dari versi sebelumnya, seperti:
+
+* **Tag semantik** adalah tag yang memberikan makna lebih kepada elemen HTML, sehingga memudahkan mesin pencari dan browser untuk memahami struktur dan konten web. Contohnya, tag `<header>`, `<footer>`, `<nav>`, `<article>`, `<section>`, `<aside>`, dan lain-lain.
+
+* **Tag multimedia** adalah tag yang memungkinkan untuk menyisipkan konten audio dan video tanpa perlu plugin tambahan. Contohnya, tag `<audio>` dan `<video>`.
+
+* **Tag grafis** adalah tag yang memungkinkan untuk menggambar grafis 2D dan 3D secara dinamis dengan menggunakan JavaScript. Contohnya, tag `<canvas>` dan `<svg>`.
+
+* **Tag form** adalah tag yang menambahkan beberapa jenis input baru dan atribut baru untuk elemen form. Contohnya, tag `<datalist>`, `<output>`, `<progress>`, `<meter>`, dan lain-lain.
+
+* **Tag struktur** adalah tag yang menentukan tipe dokumen HTML dan bahasa yang digunakan. Contohnya, tag `<!DOCTYPE html>` dan `<html lang="id">`.
+
+</details>
+
+<details>
+<summary>3. Jelaskan perbedaan antara margin dan padding.</summary>
+
+### Margin dan padding adalah dua properti CSS yang sering digunakan untuk mengatur jarak antara elemen HTML. Kedua hal ini merupakan bagian dari Box Model pada CSS dengan gambar berikut:
+
+![boxModel](https://hackmd.io/_uploads/B1QiTx9ya.png)
+
+### Berikut adalah beberapa perbedaan antara margin dan padding:
+
+| Margin | Padding |
+| --- | --- |
+| Jarak antara batas (border) elemen dengan elemen lain di sekitarnya | Jarak antara batas (border) elemen dengan konten (content) elemen itu sendiri|
+| Tidak termasuk dalam ukuran elemen | Termasuk dalam ukuran elemen |
+| Tidak terpengaruh oleh warna latar belakang (background color) atau gambar latar belakang (background image) elemen| Terpengaruh oleh background color dan background image|
+| Tidak memengaruhi ukuran elemen itu sendiri | Memengaruhi ukuran elemen hingga dapat memperluas elemen dan meningkatkan ukurannya jika menambahkan padding tersebut. |
+
+
+</details>
+
+<details>
+<summary>4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?</summary>
+
+### *Bootstrap* adalah framework front-end yang menyediakan sekumpulan komponen HTML, CSS, dan JavaScript yang telah dibuat sebelumnya.
+
+Komponen-komponen ini dapat digunakan untuk membuat antarmuka pengguna yang responsif dan mobile-friendly dengan cepat dan mudah12. Bootstrap memiliki desain yang terstruktur dan konsisten, tetapi mungkin kurang fleksibel untuk membuat desain yang unik dan kreatif.
+
+### *Tailwind* adalah framework front-end baru yang tidak menyediakan komponen siap pakai, tetapi terdapat utilitas yang dapat digabungkan untuk desain sesuai kebutuhan.
+
+Tailwind memberikan kebebasan kreatif yang lebih besar, tetapi mungkin memerlukan waktu dan usaha yang lebih banyak untuk membuat antarmuka pengguna yang responsif dan mobile-friendly.
+
+Beberapa perbedaan yang signifikan pada Tailwind dan Bootstrap dapat dilihat pada tabel berikut:
+
+| Tailwind | Bootstrap |
+| --- | --- |
+|file CSS yang lebih kecil karena hanya memuat kelas-kelas utilitas yang ada| file CSS yang lebih besar karena banyak komponen yang telah didefinisikan |
+| Memiliki fleksibilitas dan adaptibilitas tinggi terhadap proyek | Seringkali menghasilkan tampilan yang konsisten |
+| Memerlukan pemahaman terhadap kelas-kelas utilitas yang tersedia dan bagaimana memodifikasinya sesuai dengan keinginan masing-masing | Beginner-friendly, memiliki pembelajaran yang cepat untuk pemula karena dapat mulai dengan komponen yang telah tersedia |
+
+</details>
+
+<details>
+<summary>5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
+
+- [x] Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut
+    - [x] Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+
+    1. Pertama saya kustomisasi halaman login dengan melingkupi keseluruhan halaman dalam satu tag `<div class="container">`. Keseluruhan class `container` ini saya atur dengan CSS yang embed dengan codingan pada tag `<style></style>` berikut
+    ```css
+    .container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    ```
+    class `container` ini menerapkan tampilan secara flex dan menampilkan elemen secara kolom atau menurun. Serta menengahkan elemen-elemen tersebut.
+
+    Selanjutnya, saya mengubah keseluruhan font dari halaman dengan menggunakan font `font-family = "Andy Bold V2"` dengan sebelumnya mengimport font tersebut dari suatu url dan menaruhnya seperti berikut
+    ```css
+    @font-face {
+        font-family: "Andy Bold V2";
+        src: url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.eot");
+        src: url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.eot?#iefix")format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/775c3814e9c1f228d495333e07580d59.svg#Andy Bold V2")format("svg");
+    }
+
+    * {
+        font-family:"Andy Bold V2";
+    }
+    ```
+
+    Lalu, saya memisahkan tiap elemen judul pada class `title`, input login pada class `login`, messages dari modul Django pada class `messages`, dan terakhir link yang redirect ke halaman registrasi dengan class `registration box`. Adapun struktur HTML nya sebagai berikut
+
+    ```html
+    <div class = "container">
+        ...
+        <div class = "title">
+            ...
+        </div>
+        ...
+        <div class = "login">
+            ...
+        </div>
+        ...
+        <div class = "messages_box">
+            ...
+        </div>
+        ...
+        <div class = "register_box">
+            ...
+        </div>
+    </div>
+    ```
+
+
+
+    Pada `login` dan `registration box` saya membuat properti box-shadow untuk mengcontain elemen tersebut dengan styling berikut `style="background-color: rgba(52, 48, 92, 0.8); padding: 10px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);"`. Lalu tiap input text dan password menyesuaikan agar mendapatkan tema background dan font yang sama.
+
+    Agar memiliki background yang menarik, saya menaruh url pada background-image `background-image: url('https://forums.terraria.org/index.php?attachments/n-2-png.31584/');` dan mengatur agar gambar tersebut menutup keseluruhan halaman dengan `background-size: cover;`.
+
+    Pada button dan link saya mengkustomisasi agar button atau link tersebut membesar ketika cursor menghovernya dengan kode berikut
+
+    ```css
+    .login_btn{
+        background-color: transparent;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        text-shadow: 0px 0px 5px #000000;
+        font-size: large;
+    }
+    .login_btn:hover{
+        transform: scale(1.65);
+        color:#fed405;
+    }
+    ```
+
+    2. Pada halaman register, saya banyak mengadaptasi berdasarkan halaman login seperti container flex secara kolom dan wrap, serta menengahkan keseluruhan elemen.
+
+    Halaman ini memiliki 2 class yaitu `register_form` sebagai input user untuk registrasi akun baru dan `login_box` untuk mengarahkan halaman kembali ke halaman login.
+
+    Register form memiliki styling CSS sebagai berikut
+
+    ```css
+    .register_form{
+        background: rgba(52, 48, 92, 0.8); 
+        padding: 30px; 
+        border-radius: 10px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .submit_btn{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color:white;
+        text-shadow: 0px 0px 5px #000000;
+        font-family: "Andy Bold V2";
+        font-size: 24px;
+    }
+    .submit_btn:hover{
+        transform: scale(1.65);
+        color:#fed405;
+    }
+    ```
+
+    Pada button submit tersebut saya menyamakan tema utamanya agar ketika dihover, button atau link tersebut akan memperbesar scalenya.
+
+    Pada `login_box` saya juga menerapkan yang sama agar memiliki container box shadow yang sama dengan styling secara inline `style="background-color: rgba(52, 48, 92, 0.8); padding: 10px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);"`.
+
+    Dan tambahan styling css berikut
+
+    ```css
+    a{
+        color:white;
+        font-family: "Andy Bold V2";
+        text-shadow: 0px 0px 5px #000000;      
+    }
+    .login_link:hover{
+        color:#fed405;
+        font-size: 1.2rem;
+    }
+    .login_box{
+        margin: 10px 0px 0px 0px;
+    }
+    ```
+
+    3. Begitu pun juga untuk halaman menambahkan inventori atau `create_item.html`, saya menerapkan styling yang kurang lebih sama namun akan diubah ke depannya agar mendapatkan styling yang tidak monoton pada setiap halaman
+
+    - [x] Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan **Card**.
+
+    Pada halaman daftar inventory ataupun `main.html`, saya masih menampilkan item-item secara tabel, tetapi menambahkan navbar pada posisi paling atas dengan posisinya yang fix tidak berpindah.
+
+    Untuk keseluruhan elemen pada halaman ini masih sama dicontain oleh suatu class `container` yang memiliki styling yang sama seperti berikut
+
+    ```css
+    .container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    * {
+        font-family: "Andy Bold V2";
+    }
+    ```
+
+    Selanjutnya saya menambahkan elemen navbar sebagai wadah untuk menavigasi (saat ini hanya navigasi ke halaman login dengan cara logout). Struktur HTMLnya dan styling CSSnya adalah sebagai berikut
+
+    ```html
+    <nav class="navbar">
+            <ul>
+                <li><a>{{ name }}</a></li>
+                <li><a href="{% url 'main:logout' %}">
+                    <button>
+                    Logout
+                    </button>
+                </a></li>
+            </ul>
+        </nav>
+    ```
+
+    ```css
+    .navbar {
+        position: fixed; /* Membuat navbar tetap di atas halaman */
+        top: 0;
+        left: 0;
+        width: 100%; /* Mengisi seluruh lebar halaman */
+        background-color: rgba(54, 53, 131, 0.8);
+        font-size: large;
+        z-index: 1000; /* Untuk menempatkan navbar di atas konten lainnya */
+    }
+
+    .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .navbar li {
+        float: left;
+    }
+
+    .navbar li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    ```
+
+    Untuk sementara pada table, saya menyesuaikan background color serta fontnya sesuai dengan styling berikut
+
+    ```css
+    table, th, td {
+        border: 1px solid white;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        color: white;
+        text-shadow: 0px 0px 5px #000000;
+    }
+
+    .judul_table {
+        background-color: rgba(54, 53, 131, 1);
+    }
+    ```
+
+    Serta karena saya sudah menambahkan button untuk menghapus sebuah item, button tersebut saya modifikasi agar memiliki gambar png daripada sebuah label button. Hal ini saya optimisasi dengan cara berikut:
+
+    ```html
+    <td>
+        <form method="post" action="{% url 'main:trash_item' item.id %}">
+            {% csrf_token %}
+            <button type="submit"><img src="https://static.wikia.nocookie.net/terraria_gamepedia/images/b/b1/Trash_Slot.png/revision/latest?cb=20171214025354&format=original" /></button>
+        </form>
+    </td>
+    ```
+
+- [x] `add`-`commit`-`push` ke GitHub.
+
+</details>
