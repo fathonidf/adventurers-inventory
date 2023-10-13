@@ -20,7 +20,6 @@ Saya membuat direktori lokal dan repo baru di Github bernama ***Adventurer's Inv
 Pada proyek ***Adventurer's Inventory*** ini terdapat suatu aplikasi bernama `main` yang memiliki model, tampilan, dan URL khusus dengan rute `/main`. Inisiasi aplikasi `main` saya lakukan dengan perintah `python manage.py startapp main` hingga terbentuk direktori baru pada projek/direktori utama. Tak lupa saya daftarkan aplikasi ini ke `INSTALLED APPS` di `settings.py` seperti berikut,
 
 ```python
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
