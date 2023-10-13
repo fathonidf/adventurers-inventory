@@ -1403,7 +1403,50 @@ Pilihan antara Fetch API dan jQuery untuk penggunaan AJAX tergantung pada kebutu
 
     - [x] Ubahlah kode cards data item agar dapat mendukung AJAX GET.
 
+    Adapun pengubahan menjadi cards sebagai berikut
+
+    ```js
+    <script>
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+
+    async function refreshCards() {
+        document.getElementById("item_cards").innerHTML = ""
+        const items = await getItems()
+        let htmlString = ""
+        items.forEach((item) => {
+            htmlString += `
+            <div class="card">
+                <div class="card-body">
+                    <h2>${item.fields.name}</h2>
+                    <p><img src="${item.fields.link_image}" alt="{ item.name }"></p>
+                    <div class="item-description">
+                        <p>Description: ${ item.fields.description }</p>
+                        <p>Amount: ${ item.fields.price }</p>
+                        <p>Type: ${ item.fields.item_level }</p>
+                        <p>Amount: ${ item.fields.amount }</p>
+                        </div>
+                    <a><button onclick="trashItem(${item.pk})" type="submit"><img src="https://static.wikia.nocookie.net/terraria_gamepedia/images/b/b1/Trash_Slot.png/revision/latest?cb=20171214025354&format=original" /></button></a>
+                </div>
+            </div>` 
+        })
+        
+        document.getElementById("item_cards").innerHTML = htmlString
+    }
+    ```
+
     - [x] Lakukan pengambilan task menggunakan AJAX GET.
+
+    get dilakukan sebagai berikut
+
+    ```js
+    <script>
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+
+    ```
 
 - [x] AJAX POST
 
