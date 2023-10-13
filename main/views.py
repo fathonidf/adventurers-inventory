@@ -11,6 +11,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages  
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -21,7 +23,6 @@ def show_main(request):
     context = {
         'app_name': 'Adventurer\'s Inventory',
         'name': request.user.username,
-        'class': 'PBP E',
         'total_items': total_items,
         'items': items,
         'last_login': request.COOKIES.get("last_login")
@@ -115,3 +116,38 @@ def trash_item(request, id):
 
     response = HttpResponseRedirect(reverse("main:show_main"))
     return response
+
+def get_item_json(request):
+    product_item = Item.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_item_ajax(request):
+    if request.method == 'POST':
+
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+        link_image = request.POST.get("link_image")
+        item_level = request.POST.get("item_level")
+        user = request.user
+
+        if amount and price and item_level:
+            amount = int(amount)
+            price = int(price)
+            item_level = int(item_level)
+            new_item = Item(name=name, amount=amount, price=price, description=description, link_image=link_image, item_level=item_level, user=user)
+            new_item.save()
+            return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def delete_item_ajax(request, item_id):
+    if request.method == 'DELETE':
+        item = Item.objects.get(pk=item_id)
+        item.delete()
+        return HttpResponse(b"DELETED", status=200)
+    
+    return HttpResponseNotFound()

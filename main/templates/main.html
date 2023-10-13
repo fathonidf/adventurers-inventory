@@ -2,6 +2,8 @@
 
 {% block content %}
 <div class="container">
+    <head>
+    </head>
     <body>
         <style>
         @font-face {
@@ -26,13 +28,13 @@
             }
 
             .navbar {
-                position: fixed; /* Membuat navbar tetap di atas halaman */
+                position: fixed;
                 top: 0;
                 left: 0;
-                width: 100%; /* Mengisi seluruh lebar halaman */
+                width: 100%; 
                 background-color: rgba(54, 53, 131, 0.8);
                 font-size: large;
-                z-index: 1000; /* Untuk menempatkan navbar di atas konten lainnya */
+                z-index: 1000;
             }
 
             .navbar ul {
@@ -67,6 +69,7 @@
                 background-image: url("https://forums.terraria.org/index.php?attachments/n-9-png.37956/");
                 background-repeat: no-repeat;
                 background-size: cover;
+                background-attachment: fixed;
                 height: 100vh;
             }
 
@@ -104,6 +107,7 @@
                 text-align: left;
                 color: white;
                 text-shadow: 0px 0px 5px #000000;
+                background-color: rgba(112, 111, 181, 0.5);
             }
 
             .judul_table {
@@ -120,7 +124,7 @@
             }
 
             button:hover {
-                transform: scale(1.2);
+                /* transform: scale(1.2); */
                 color: #fed405;
             }
         </style>
@@ -140,15 +144,15 @@
         <h1>{{ app_name }}</h1>
         </div>
 
-        <h3>Total items in your inventory: {{ total_items }}</h3>
+        <h3 style="color: #fff;">Total items in your inventory: {{ total_items }}</h3>
 
-        <table>
+        <!-- <table>
             <tr class = "judul_table">
+                <th>Image</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>iLvl</th>
-                <th>Use</th>
                 <th>Amount</th>
                 <th></th>
                 <th></th>
@@ -159,11 +163,11 @@
 
             {% for item in items %}
                 <tr>
+                    <td><img src="{{ item.link_image }}" alt="{ item.name }"></td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.description }}</td>
                     <td>{{ item.price }}</td>
                     <td>{{ item.item_level }}</td>
-                    <td>{{ item.use }}</td>
                     <td>{{ item.amount }}</td>
 
                     <td>
@@ -189,18 +193,154 @@
 
                 </tr>
             {% endfor %}
-        </table>
+        </table> -->
+
+        <div id="item_cards" class="item-cards-container"></div>
+        <br />
+        <table id="item_table"></table>
+        <br />
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
 
         <br />
 
         <h5>Sesi terakhir login: {{ last_login }}</h5>
 
-        <a href="{% url 'main:create_item' %}">
+        <!-- <a href="{% url 'main:create_item' %}">
             <button id="add_item">
                 Add New Item
             </button>
-        </a>
+        </a> -->
 
     </body>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="item_level" class="col-form-label">Item Level:</label>
+                        <input type="number" class="form-control" id="item_level" name="item_level"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="link_image" class="col-form-label">Link Image:</label>
+                        <textarea class="form-control" id="link_image" name="link_image"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+
+    async function refreshCards() {
+        document.getElementById("item_cards").innerHTML = ""
+        const items = await getItems()
+        let htmlString = ""
+        items.forEach((item) => {
+            htmlString += `
+            <div class="card">
+                <div class="card-body">
+                    <h2>${item.fields.name}</h2>
+                    <p><img src="${item.fields.link_image}" alt="{ item.name }"></p>
+                    <div class="item-description">
+                        <p>Description: ${ item.fields.description }</p>
+                        <p>Amount: ${ item.fields.price }</p>
+                        <p>Type: ${ item.fields.item_level }</p>
+                        <p>Amount: ${ item.fields.amount }</p>
+                        </div>
+                    <a><button onclick="trashItem(${item.pk})" type="submit"><img src="https://static.wikia.nocookie.net/terraria_gamepedia/images/b/b1/Trash_Slot.png/revision/latest?cb=20171214025354&format=original" /></button></a>
+                </div>
+            </div>` 
+        })
+        
+        document.getElementById("item_cards").innerHTML = htmlString
+    }
+
+    async function refreshItems() {
+        document.getElementById("item_table").innerHTML = ""
+        const items = await getItems()
+        let htmlString = `<tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>iLvl</th>
+            <th>Amount</th>
+        </tr>`
+        items.forEach((item) => {
+            htmlString += `\n<tr>
+            <td><img src="${item.fields.link_image}" alt="{ item.name }"></td>
+            <td>${item.fields.name}</td>
+            <td>${item.fields.description}</td>
+            <td>${item.fields.price}</td>
+            <td>${item.fields.item_level}</td>
+            <td>${item.fields.amount}</td>
+        </tr>` 
+        })
+        
+        document.getElementById("item_table").innerHTML = htmlString
+    }
+
+    refreshItems()
+    refreshCards()
+
+    function trashItem(itemId) {
+        fetch(`delete_item_ajax/${itemId}`, {
+            method: "DELETE",
+            headers: {
+                "X-CSRFToken": document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+            },
+        })
+        .then(refreshItems)
+        .then(refreshCards)
+
+        return false
+    }
+
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+        .then(refreshCards)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addItem
+
+    
+</script>
 {% endblock content %}

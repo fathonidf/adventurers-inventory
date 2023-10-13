@@ -1282,3 +1282,320 @@ Beberapa perbedaan yang signifikan pada Tailwind dan Bootstrap dapat dilihat pad
 - [x] `add`-`commit`-`push` ke GitHub.
 
 </details>
+
+---
+
+# Tugas 6
+
+<details>
+<summary>1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.</summary>
+
+#### Asynchronous programming dan synchronous programming adalah dua model pemrograman yang berbeda. Berikut adalah tiga perbedaan antara keduanya:
+
+| Asynchronous programming | Synchronous programming |
+| --- | --- |
+|Asynchronous programming memungkinkan beberapa tugas berjalan secara bersamaan atau mandiri tanpa harus menunggu tugas lain selesai | Synchronous programming mengharuskan setiap tugas berjalan secara berurutan dan menunggu tugas sebelumnya selesai |
+| Asynchronous programming cocok untuk komputasi terdistribusi, di mana beberapa proses dapat berkomunikasi dan berkolaborasi secara jaringan | Synchronous programming lebih sesuai untuk sistem reaktif, di mana setiap proses harus memberikan respons yang cepat dan konsisten |
+|Asynchronous programming memiliki kurva belajar yang lebih tinggi daripada synchronous programming. Asynchronous programming bisa lebih sulit dimengerti karena memerlukan pengetahuan tentang callback, promise, async/await, dan konsep lainnya |Synchronous programming mudah dipahami karena mengikuti alur eksekusi yang jelas dan linier |
+
+</details>
+
+<details>
+<summary>2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.</summary>
+
+#### Paradigma event-driven programming adalah paradigma pemrograman di mana alur program ditentukan oleh kejadian-kejadian (events) yang terjadi, seperti aksi pengguna dari mouse, keyboard, touchpad, dan layar sentuh. Kejadian-kejadian ini dipantau oleh kode yang disebut event listener. Jika event listener mendeteksi bahwa event yang ditugaskan telah terjadi, maka ia akan menjalankan event handler (fungsi atau metode yang dipanggil ketika event terjadi).
+
+#### Salah satu contoh penerapan paradigma event-driven programming pada tugas ini adalah ketika kita menggunakan AJAX untuk mengirim permintaan ke server tanpa harus memuat ulang halaman web. AJAX menggunakan objek XMLHttpRequest untuk membuat permintaan asinkron ke server. Objek ini memiliki properti onreadystatechange yang merupakan sebuah event listener. Properti ini menetapkan sebuah fungsi yang akan dijalankan ketika status permintaan berubah. Fungsi ini adalah event handler yang dapat memproses respons dari server dan memperbarui halaman web sesuai dengan respons tersebut.
+
+contoh implementasinya:
+```js
+async function refreshCards() {
+        document.getElementById("item_cards").innerHTML = ""
+        const items = await getItems()
+        let htmlString = ""
+        items.forEach((item) => {
+            htmlString += `
+            <div class="card">
+                <div class="card-body">
+                    <h2>${item.fields.name}</h2>
+                    <p><img src="${item.fields.link_image}" alt="{ item.name }"></p>
+                    <div class="item-description">
+                        <p>Description: ${ item.fields.description }</p>
+                        <p>Amount: ${ item.fields.price }</p>
+                        <p>Type: ${ item.fields.item_level }</p>
+                        <p>Amount: ${ item.fields.amount }</p>
+                        </div>
+                    <a><button onclick="trashItem(${item.pk})" type="submit"><img src="https://static.wikia.nocookie.net/terraria_gamepedia/images/b/b1/Trash_Slot.png/revision/latest?cb=20171214025354&format=original" /></button></a>
+                </div>
+            </div>` 
+        })
+        
+        document.getElementById("item_cards").innerHTML = htmlString
+    }
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+        .then(refreshCards)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addItem
+```
+
+
+</details>
+
+<details>
+<summary>
+3. Jelaskan penerapan asynchronous programming pada AJAX.</summary>
+
+#### Asynchronous programming adalah pemrograman yang memungkinkan beberapa tugas berjalan secara bersamaan atau mandiri tanpa harus menunggu tugas lain selesai. AJAX adalah singkatan dari Asynchronous JavaScript and XML, yang merupakan teknik untuk membuat permintaan asinkron ke server web menggunakan JavaScript dan XML.
+
+Penerapan asynchronous programming pada AJAX adalah sebagai berikut:
+
+* AJAX menggunakan objek XMLHttpRequest untuk membuat permintaan asinkron ke server web. Objek ini memiliki properti onreadystatechange yang merupakan sebuah event listener. Properti ini menetapkan sebuah fungsi yang akan dijalankan ketika status permintaan berubah. Fungsi ini adalah event handler yang dapat memproses respons dari server dan memperbarui halaman web sesuai dengan respons tersebut.
+
+* AJAX memungkinkan halaman web untuk mengirim dan menerima data dari server web tanpa harus memuat ulang halaman web. Hal ini meningkatkan performa dan pengalaman pengguna, karena mereka tidak perlu menunggu halaman web selesai dimuat untuk melihat hasil permintaan mereka.
+
+* AJAX juga memungkinkan halaman web untuk mengirim dan menerima data dari server web secara selektif, hanya mengambil data yang dibutuhkan dan tidak perlu mengambil seluruh halaman web. Hal ini menghemat bandwidth dan sumber daya, karena hanya data yang relevan yang dikirim dan diterima.
+
+</details>
+
+<details>
+<summary>
+4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.</summary>
+
+#### Penerapan AJAX dengan menggunakan Fetch API dan jQuery adalah dua pendekatan yang berbeda dalam mengintegrasikan teknologi AJAX ke dalam proyek web.
+
+1. **Fetch API**:
+Vanilla JavaScript: Fetch API adalah bagian dari JavaScript itu sendiri, yang berarti Anda tidak perlu mengunduh atau memasang library tambahan. Ini adalah pendekatan JavaScript murni.
+Modern Standard: Fetch API adalah standar modern yang direkomendasikan oleh World Wide Web Consortium (W3C) dan merupakan cara yang direkomendasikan oleh komunitas web untuk mengambil dan mengirim data secara asinkron.
+Promise-Based: Fetch API mengembalikan objek Promise, yang memungkinkan Anda mengatasi permintaan HTTP dengan lebih baik menggunakan async/await atau konsep Promise.
+Lebih Ringan: Lebih ringan dalam hal ukuran, yang berarti tidak ada overheard library yang harus diunduh.
+2. **jQuery**:
+Library: jQuery adalah library JavaScript yang memiliki banyak fitur, dan AJAX adalah salah satu komponennya. Saat Anda menggunakan jQuery untuk AJAX, Anda juga mendapatkan akses ke banyak fitur dan utilitas lain yang disediakan oleh jQuery.
+Sintaksis yang Mudah: Sintaksis jQuery umumnya dianggap lebih sederhana dan mudah dipahami oleh pengembang pemula.
+Kompatibilitas Browser yang Baik: jQuery dirancang untuk mendukung berbagai jenis browser yang berbeda. Itu bisa menjadi pilihan yang baik jika Anda perlu memastikan kompatibilitas lintas browser yang kuat.
+
+
+Pilihan antara Fetch API dan jQuery untuk penggunaan AJAX tergantung pada kebutuhan dan preferensi pengembang. Berikut adalah beberapa pertimbangan:
+
+* Proyek Modern: Untuk proyek-proyek modern dengan dukungan browser yang baik, Fetch API adalah pilihan yang kuat. Ini adalah pendekatan JavaScript murni dan merupakan standar modern yang dianjurkan.
+
+* Kebutuhan Library Tambahan: Jika Anda memerlukan banyak fitur tambahan yang disediakan oleh jQuery, seperti animasi, manipulasi DOM, dan lainnya, jQuery mungkin menjadi pilihan yang baik.
+
+* Sintaksis dan Kekuatan: Fetch API lebih kuat dan ekspresif dalam hal mengelola permintaan HTTP, terutama ketika digunakan bersama dengan async/await. Namun, jika Anda mengutamakan kesederhanaan sintaksis dan sudah akrab dengan jQuery, Anda mungkin merasa lebih nyaman dengan jQuery.
+
+* Ukuran dan Kinerja: Fetch API lebih ringan dari segi ukuran, dan dapat mengurangi overhead yang dihasilkan dari penggunaan library tambahan. Ini dapat berkontribusi pada kinerja yang lebih baik.
+
+#### Kesimpulannya, jika Anda memiliki proyek modern dan ingin memanfaatkan fitur JavaScript ES6, Fetch API adalah pilihan yang lebih baik. Namun, jika Anda sudah akrab dengan jQuery atau memerlukan banyak fitur tambahan yang disediakan oleh jQuery, itu masih merupakan pilihan yang valid. Sebaiknya pilih teknologi yang sesuai dengan kebutuhan proyek Anda.
+
+</details>
+
+<details>
+<summary>
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
+
+- [x] AJAX GET
+
+    - [x] Ubahlah kode cards data item agar dapat mendukung AJAX GET.
+
+    - [x] Lakukan pengambilan task menggunakan AJAX GET.
+
+- [x] AJAX POST
+
+    - [x] Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item.
+
+    Pertama saya hapus button untuk add item sebelumnya, lalu menambahkan modal sebagai berikut dengan menyesuaikan models yang saya buat
+
+    ```html
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="item_level" class="col-form-label">Item Level:</label>
+                        <input type="number" class="form-control" id="item_level" name="item_level"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="link_image" class="col-form-label">Link Image:</label>
+                        <textarea class="form-control" id="link_image" name="link_image"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    ```
+
+    Modal berikut akan muncul ketika di trigger pada tombol `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>`
+
+    - [x] Modal di-trigger dengan menekan suatu tombol pada halaman utama. Saat penambahan item berhasil, modal harus ditutup dan input form harus dibersihkan dari data yang sudah dimasukkan ke dalam form sebelumnya.
+
+    Selanjutnya membuat scripts js untuk membuatnya fungsional
+    
+    ```html
+    <script>
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+
+    async function refreshCards() {
+        document.getElementById("item_cards").innerHTML = ""
+        const items = await getItems()
+        let htmlString = ""
+        items.forEach((item) => {
+            htmlString += `
+            <div class="card">
+                <div class="card-body">
+                    <h2>${item.fields.name}</h2>
+                    <p><img src="${item.fields.link_image}" alt="{ item.name }"></p>
+                    <div class="item-description">
+                        <p>Description: ${ item.fields.description }</p>
+                        <p>Amount: ${ item.fields.price }</p>
+                        <p>Type: ${ item.fields.item_level }</p>
+                        <p>Amount: ${ item.fields.amount }</p>
+                        </div>
+                    <a><button onclick="trashItem(${item.pk})" type="submit"><img src="https://static.wikia.nocookie.net/terraria_gamepedia/images/b/b1/Trash_Slot.png/revision/latest?cb=20171214025354&format=original" /></button></a>
+                </div>
+            </div>` 
+        })
+        
+        document.getElementById("item_cards").innerHTML = htmlString
+    }
+
+    async function refreshItems() {
+        document.getElementById("item_table").innerHTML = ""
+        const items = await getItems()
+        let htmlString = `<tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>iLvl</th>
+            <th>Amount</th>
+        </tr>`
+        items.forEach((item) => {
+            htmlString += `\n<tr>
+            <td><img src="${item.fields.link_image}" alt="{ item.name }"></td>
+            <td>${item.fields.name}</td>
+            <td>${item.fields.description}</td>
+            <td>${item.fields.price}</td>
+            <td>${item.fields.item_level}</td>
+            <td>${item.fields.amount}</td>
+        </tr>` 
+        })
+        
+        document.getElementById("item_table").innerHTML = htmlString
+    }
+
+    refreshItems()
+    refreshCards()
+
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+        .then(refreshCards)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addItem
+
+    
+    </script>
+    ```
+
+    - [x] Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.
+
+    pada `views.py`, fungsinya pun sebagai berikut
+
+    ```python
+    @csrf_exempt
+    def add_item_ajax(request):
+        if request.method == 'POST':
+
+            name = request.POST.get("name")
+            amount = request.POST.get("amount")
+            price = request.POST.get("price")
+            description = request.POST.get("description")
+            link_image = request.POST.get("link_image")
+            item_level = request.POST.get("item_level")
+            user = request.user
+
+            if amount and price and item_level:
+                amount = int(amount)
+                price = int(price)
+                item_level = int(item_level)
+                new_item = Item(name=name, amount=amount, price=price, description=description, link_image=link_image, item_level=item_level, user=user)
+                new_item.save()
+                return HttpResponse(b"CREATED", status=201)
+
+        return HttpResponseNotFound()
+    ```
+
+    - [x] Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.
+
+    melakukan routing sebagai berikut pada `urls.py`
+    ```python
+    urlpatterns = [
+        path('create-item-ajax/', add_item_ajax, name='add_item_ajax'),
+        path('delete-item-ajax/<int:item_id>/', delete_item_ajax, name='delete_item_ajax')
+    ]
+    ```
+
+    - [x] Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
+
+    Menambahkan atribut `onclick=addItem` pada tombol `Add Item` dalam modal, agar ketika tombol di 'click' membuat item baru
+
+    - [x] Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan.
+
+    Melakukan refresh cards dan refresh table setiap terjadi perubahan pada items (menghapus item, membuat item)
+
+    ```js
+    .then(refreshItems)
+    .then(refreshCards)
+    ```
+
+- [x] Melakukan perintah collectstatic.
+
+Terakhir saya melakukan collecstatic dengan perintah berikut pada command terminal
+
+```
+(env) C:\Ngoding\Pemrograman Berbasis Platform\adventurers_inventory>python manage.py collectstatic
+
+125 static files copied to 'C:\Ngoding\Pemrograman Berbasis Platform\adventurers_inventory\static'.
+```
+
+</details>

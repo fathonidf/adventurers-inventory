@@ -4,9 +4,10 @@ from django.contrib.auth.models import User
 
 class Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     name = models.CharField(max_length=255)
     amount = models.IntegerField()
     description = models.TextField()
     price = models.IntegerField()
     item_level = models.IntegerField()
-    use = models.TextField()
+    link_image = models.TextField()
