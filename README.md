@@ -3,8 +3,7 @@
 PBP E`
 
 ## Tautan Aplikasi
-[Link to Adventurer's Inventory](https://adventurers-inventory.adaptable.app/main)
-(*sebelum deactivated*)
+[Link to Adventurer's Inventory](https://daffa-mohamad-tugas.pbp.cs.ui.ac.id/)
 
 
 # Tugas 2
