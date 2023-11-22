@@ -77,6 +77,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'adventurers_inventory.wsgi.application'
 
+CSRF_TRUSTED_ORIGINS = ["https://daffa-mohamad-tugas.pbp.cs.ui.ac.id"]
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
